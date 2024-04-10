@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     [Header("Ground Movement")]
     public float speed;
-    public Vector3 friction = new Vector3(.1f, 0);
+    public Vector3 friction = new Vector3(.1f, 0, .1f);
     private float _currentSpeed;
     private float side = 1f;
 
@@ -49,10 +49,13 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             myRigidBody.velocity = Vector3.right * speed;
+            //myRigidBody.velocity = new Vector3(speed, myRigidBody.velocity.y, myRigidBody.velocity.z);
         }
         else if (Input.GetKey(KeyCode.A))
         {
             myRigidBody.velocity = Vector3.left * speed;
+            //myRigidBody.velocity = new Vector3(-speed, myRigidBody.velocity.y, myRigidBody.velocity.z);
+
         }
         else if (Input.GetKey(KeyCode.W))
         {
@@ -62,7 +65,6 @@ public class Player : MonoBehaviour
         {
             myRigidBody.velocity = Vector3.back * speed;
         }
-
 
 
         if (myRigidBody.velocity.x > 0)
