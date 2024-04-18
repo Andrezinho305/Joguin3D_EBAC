@@ -1,96 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
-    #region Variables
-    public Rigidbody myRigidBody;
+    public CharacterController characterController; 
+    public float speed = 1f;
+    public float turnSpeed = 1f;
+    public float gravity = 9.8f;
 
-    [Header("Movement")]
+    private float vSpeed = 0f;
 
-    [Header("Ground Movement")]
-    public float speed;
-    public Vector3 friction = new Vector3(.1f, 0, .1f);
-    private float _currentSpeed;
-    private float side = 1f;
+    [Header("Animation")]
+    public Animator animator;
 
-    [Header("Jump")]
-    public float jumpHeight = 15;
-
-    [Header("Jump Collision Check")]
-    public Collider collider;
-    public float distToGround = 0;
-    public float spaceToGround = .1f;
-
-    #endregion
-
-    private void Awake()
+    void Update()
     {
-        if (collider != null)
+        transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0); //gira o personagem no eixo horizontal inputado
+
+        var inputAxisVertical = Input.GetAxis("Vertical"); //pulo
+        var speedVector = transform.forward * inputAxisVertical * speed; //conta para o input de velocidade
+
+        vSpeed -= gravity * Time.deltaTime;
+        speedVector.y = vSpeed; //faz com que o personagem caia com a velocidade 
+
+        characterController.Move(speedVector * Time.deltaTime); //uso do controlador para se mexer
+
+
+
+        animator.SetBool("Run", inputAxisVertical != 0); //se a relação eh true, define a bool como true
+        //funciona igual aos ifs
+        /*if (inputAxisVertical != 0)
         {
-            distToGround = collider.bounds.extents.y;
+            animator.SetBool("Run", true);
         }
+        else
+        {
+            animator.SetBool("Run", false);
+        }*/
 
     }
 
 
-    private void Update()
-    {
-        HandleJump();
-        HandleMovent();
-    }
 
-
-    private void HandleMovent()
-    {
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            myRigidBody.velocity = Vector3.right * speed;
-            //myRigidBody.velocity = new Vector3(speed, myRigidBody.velocity.y, myRigidBody.velocity.z);
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            myRigidBody.velocity = Vector3.left * speed;
-            //myRigidBody.velocity = new Vector3(-speed, myRigidBody.velocity.y, myRigidBody.velocity.z);
-
-        }
-        else if (Input.GetKey(KeyCode.W))
-        {
-            myRigidBody.velocity = Vector3.forward * speed;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            myRigidBody.velocity = Vector3.back * speed;
-        }
-
-
-        if (myRigidBody.velocity.x > 0)
-        {
-            myRigidBody.velocity -= friction;
-        }
-        else if (myRigidBody.velocity.x < 0)
-        {
-            myRigidBody.velocity += friction;
-        }
-        else if (myRigidBody.velocity.z > 0)
-        {
-            myRigidBody.velocity -= friction;
-        }
-        else if (myRigidBody.velocity.z < 0)
-        {
-            myRigidBody.velocity += friction;
-        }
-    }
-
-    private void HandleJump()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            myRigidBody.velocity = Vector3.up * jumpHeight;
-        }
-    }
 }
-
