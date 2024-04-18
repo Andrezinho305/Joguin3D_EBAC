@@ -5,27 +5,62 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public CharacterController characterController; 
+ 
+    [Header("Movement")]
     public float speed = 1f;
     public float turnSpeed = 1f;
-    public float gravity = 9.8f;
 
+    [Header("Jump")]
+    public float jumpSpeed = 15f;
+    public float gravity = 9.8f;
     private float vSpeed = 0f;
+    public KeyCode jumpKeyCode = KeyCode.Space;
+
+    [Header("Runing")]
+    public KeyCode keyRun = KeyCode.LeftShift;
+    public float speedRun = 1.5f;
+
 
     [Header("Animation")]
     public Animator animator;
 
     void Update()
     {
-        transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0); //gira o personagem no eixo horizontal inputado
+        transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0); //gira o personagem no eixo horizontal default da unity inputado
 
-        var inputAxisVertical = Input.GetAxis("Vertical"); //pulo
+        var inputAxisVertical = Input.GetAxis("Vertical"); //define como barra de espaço ou default de movimento vertical da unity
         var speedVector = transform.forward * inputAxisVertical * speed; //conta para o input de velocidade
 
-        vSpeed -= gravity * Time.deltaTime;
+        if (characterController.isGrounded) //handler do pulo
+        {
+            vSpeed = 0; //
+            if (Input.GetKeyDown(jumpKeyCode))
+            {
+                vSpeed = jumpSpeed; //define velocidade vertical como 0
+            }
+        }
+
+        vSpeed -= gravity * Time.deltaTime; //reduz a velocidade vertical pela gravidade constantemente
         speedVector.y = vSpeed; //faz com que o personagem caia com a velocidade 
 
-        characterController.Move(speedVector * Time.deltaTime); //uso do controlador para se mexer
 
+        var isWalking = inputAxisVertical != 0; // identifica se a velocidade de movimento é 0 ou não
+
+        if (isWalking) //se for diferente de 0 permite rodar a função
+        {
+            if (Input.GetKey(keyRun)) //get key = enquanto segura
+            {
+                speedVector *= speedRun;
+                animator.speed = speedRun;
+            }
+            else
+            {
+                animator.speed = 1;
+            }
+        }
+
+
+        characterController.Move(speedVector * Time.deltaTime); //uso do controlador para se mexer
 
 
         animator.SetBool("Run", inputAxisVertical != 0); //se a relação eh true, define a bool como true
@@ -40,6 +75,7 @@ public class Player : MonoBehaviour
         }*/
 
     }
+
 
 
 
