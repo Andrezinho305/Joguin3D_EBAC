@@ -12,6 +12,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ChangeGun1",
+                    "type": "Button",
+                    "id": "ce9d1316-ba9a-4982-abfd-a49cc6938fc3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ChangeGun2",
+                    "type": "Button",
+                    "id": "979bc0e3-450e-4406-a74a-c1e7a62937af",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -23,6 +39,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff8bc182-cd84-4ce8-84d1-532cd54a2f27",
+                    "path": "<Keyboard>/1",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeGun1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "64924091-c35c-4566-b78e-27d20866eae8",
+                    "path": "<Keyboard>/2",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeGun2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

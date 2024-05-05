@@ -13793,6 +13793,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunBase: {fileID: 5579117817571225148, guid: eb2dec3b0c48e7a4986f1ac57899064e, type: 3}
   gunPosition: {fileID: 1071237802}
+  gunList:
+  - {fileID: 5579117817571225148, guid: eb2dec3b0c48e7a4986f1ac57899064e, type: 3}
+  - {fileID: 5876381786554246619, guid: a416a10facdc8d64aa6d0d71585db866, type: 3}
 --- !u!1001 &2076431801
 PrefabInstance:
   m_ObjectHideFlags: 0

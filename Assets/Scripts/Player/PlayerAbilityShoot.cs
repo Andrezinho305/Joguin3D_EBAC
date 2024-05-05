@@ -10,7 +10,11 @@ public class PlayerAbilityShoot : PlayerAbilityBase
     public GunBase gunBase;
     public Transform gunPosition;
 
+    public List<GunBase> gunList;
+
     private GunBase _currentGun;
+
+    
 
     protected override void Init()
     {
@@ -24,10 +28,17 @@ public class PlayerAbilityShoot : PlayerAbilityBase
 
         inputs.Gameplay.Shoot.canceled += ctx => CancelShoot();
 
+
     }
 
     private void CreateGun()
     {
+        //pedido pelo exercício -> trocar arma usando 1 e 2
+        //input acessa a lista e instancia um numero especifico dela
+        //inputs.Gameplay.ChangeGun1.performed += ctx => Instantiate(gunList.Count, gunPosition)
+
+
+        //jeito da aula, só seleciona na mão
         _currentGun = Instantiate(gunBase, gunPosition);
 
         _currentGun.transform.localPosition = _currentGun.transform.localEulerAngles = Vector3.zero;
