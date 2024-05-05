@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GunShootAngle : GunShootLimit
 {
+
     public int ammountPerShot = 4;
     public float shotAngle = 15f;
 
@@ -31,18 +32,6 @@ public class GunShootAngle : GunShootLimit
 
             projectile.transform.parent = null; //tira de dentro do parent
 
-
         }
-
-
-
-
-
     }
-
-
-
-
-
-
 }
