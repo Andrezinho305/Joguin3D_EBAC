@@ -14,6 +14,9 @@ public class PlayerAbilityShoot : PlayerAbilityBase
 
     private GunBase _currentGun;
 
+    private List<GunBase> gunInstances;
+    private int gunIndex = 0;
+
     
 
     protected override void Init()
@@ -28,20 +31,29 @@ public class PlayerAbilityShoot : PlayerAbilityBase
 
         inputs.Gameplay.Shoot.canceled += ctx => CancelShoot();
 
-
+        inputs.Gameplay.ChangeGun1.performed += ctx => ChangeGunNext();
+        inputs.Gameplay.ChangeGun2.performed += ctx => ChangeGunPrevious();
     }
 
     private void CreateGun()
     {
         //pedido pelo exercício -> trocar arma usando 1 e 2
-        //input acessa a lista e instancia um numero especifico dela
-        //inputs.Gameplay.ChangeGun1.performed += ctx => Instantiate(gunList.Count, gunPosition)
+        gunInstances = new List<GunBase>(); //define uma lista com base nas guns
 
+        for(int i = 0; i < gunList.Count; i++)
+        {
+            gunInstances.Add(Instantiate(gunList[i], gunPosition)); //instancia todas as armas da lista
+            gunInstances[gunInstances.Count - 1].transform.localPosition = Vector3.zero;
+            gunInstances[gunInstances.Count - 1].gameObject.SetActive(false); //desativa todas as armas
+        }
+
+        _currentGun = gunInstances[0];
+        _currentGun.gameObject.SetActive(true); //reativa a primeira arma da lista
+        gunIndex = 0;
 
         //jeito da aula, só seleciona na mão
-        _currentGun = Instantiate(gunBase, gunPosition);
-
-        _currentGun.transform.localPosition = _currentGun.transform.localEulerAngles = Vector3.zero;
+        /*_currentGun = Instantiate(gunBase, gunPosition);
+          _currentGun.transform.localPosition = _currentGun.transform.localEulerAngles = Vector3.zero;*/
     }
 
 
@@ -58,5 +70,26 @@ public class PlayerAbilityShoot : PlayerAbilityBase
         _currentGun.StopShoot();
     }
 
+    private void ChangeGunNext()
+    {
+        _currentGun.gameObject.SetActive(false);
+        gunIndex++;
+
+        if (gunIndex >= gunInstances.Count) gunIndex = 0;
+
+        _currentGun = gunInstances[gunIndex];
+        _currentGun.gameObject.SetActive(true);
+    }
+
+    private void ChangeGunPrevious()
+    {
+        _currentGun.gameObject.SetActive(false);
+        gunIndex--;
+
+        if (gunIndex < 0) gunIndex = gunInstances.Count - 1;
+
+        _currentGun = gunInstances[gunIndex];
+        _currentGun.gameObject.SetActive(true);
+    }
 
 }
