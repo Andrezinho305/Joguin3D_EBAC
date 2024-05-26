@@ -128,9 +128,10 @@ MonoBehaviour:
   prefabProjectile: {fileID: 8388513577524632626, guid: 3f99021de980f864292f5a7bb40c2a02, type: 3}
   shootPosition: {fileID: 5876381786528705438}
   shotSpeed: 50
-  timeBetweenShots: 0.3
+  timeBetweenShots: 0.5
   shootKey: 323
+  uiGunUpdater: []
   maxAmmo: 5
   timeToReload: 1
-  ammountPerShot: 4
+  ammountPerShot: 5
   shotAngle: 15

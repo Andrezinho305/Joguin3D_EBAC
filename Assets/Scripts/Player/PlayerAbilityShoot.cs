@@ -21,7 +21,7 @@ public class PlayerAbilityShoot : PlayerAbilityBase
 
     protected override void Init()
     {
-        base.Init();
+        base.Init(); 
 
         CreateGun();
 
