@@ -23,8 +23,15 @@ public class ProjectileBase : MonoBehaviour
     {
         var damageable = collision.transform.GetComponent<IDamageable>();
 
-        if (damageable != null) damageable.Damage(damageAmount);
+        if (damageable != null)
+        {
+            Vector3 dir = collision.transform.position - transform.position; //identifica a direção da colisao e calcula para onde mover o inimigo
+            dir = -dir.normalized; //retorna o vetor para 1 independente da conta anterior
+            dir.y = 0;
 
+            damageable.Damage(damageAmount, dir);
+
+        }
         Destroy(gameObject);
     }
 }

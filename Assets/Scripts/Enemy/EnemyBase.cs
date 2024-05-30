@@ -72,6 +72,8 @@ namespace Enemy
             if (flashColor != null) flashColor.Flash();
             if (particleSystem != null) particleSystem.Emit(15);
 
+            //transform.position -= transform.forward;
+
             _currentLife -= f;
             
             if(_currentLife <= 0)
@@ -80,11 +82,17 @@ namespace Enemy
             }           
         }
 
+        public void Damage (float damage, Vector3 dir) //interface usada para fazer checagens em larga escala
+        {
+            //Debug.Log("Damaged");
+            OnDamageTaken(damage);
+            transform.DOMove(transform.position -= dir, .1f);
+        }
+
         public void Damage (float damage) //interface usada para fazer checagens em larga escala
         {
             Debug.Log("Damaged");
             OnDamageTaken(damage);
-
         }
 
 
