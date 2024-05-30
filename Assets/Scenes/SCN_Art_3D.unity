@@ -14685,10 +14685,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7005984060370774305, guid: 23bfb373aee06ef48b2782ea9056aa10, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7588af4af547cc348981d21ab3585d13, type: 2}
     - target: {fileID: 7005984060937915837, guid: 23bfb373aee06ef48b2782ea9056aa10, type: 3}
       propertyPath: m_Name
       value: Enemy_02
