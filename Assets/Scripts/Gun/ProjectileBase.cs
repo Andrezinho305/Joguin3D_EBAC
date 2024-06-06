@@ -21,6 +21,11 @@ public class ProjectileBase : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        var projectile = collision.collider.GetComponent<ProjectileBase>(); //verifica se houve colisao com o projetil
+
+        if (projectile != null) return; //se o projetil colidiu com si mesmo, nao faz a proxima parte do codigo
+        
+        
         var damageable = collision.transform.GetComponent<IDamageable>();
 
         if (damageable != null)
