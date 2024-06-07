@@ -16,12 +16,14 @@ namespace Enemy
 
         public float startLife = 10f;
 
+        public bool lookAtPlayer = false;
 
+        private Player _player;
 
         [SerializeField] private float _currentLife;
 
         [Header("Spawn Animation")]
-        public float startAnimationDuration = .2f;
+        public float startAnimationDuration = .5f;
         public Ease startAnimationEase = Ease.OutBack;
         public bool startWithSpawnAnimation = true;
 
@@ -32,6 +34,11 @@ namespace Enemy
         private void Awake()
         {
             Init();
+        }
+
+        private void Start()
+        {
+            _player = GameObject.FindObjectOfType<Player>();
         }
 
         protected virtual void Init()
@@ -46,8 +53,6 @@ namespace Enemy
             _currentLife = startLife;
             
         }
-
-
 
         protected virtual void Kill()
         {
@@ -95,6 +100,16 @@ namespace Enemy
             OnDamageTaken(damage);
         }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            Player p = collision.transform.GetComponent<Player>(); //identifica se a colisão foi com o player
+            //precisa de um collider, o player controller nao implementa fisica desse jeito
+            if (p != null)
+            {
+                p.Damage(1);
+            }
+        }
+
 
         #region Animations
 
@@ -111,12 +126,19 @@ namespace Enemy
 
         #endregion
 
-        #region Debug
+        #region Update
 
 
-        private void Update()
+        public virtual void Update()
         {
             if (Input.GetKeyDown(KeyCode.T)) OnDamageTaken(5f);
+
+
+            if(lookAtPlayer)
+            {
+                transform.LookAt(_player.transform.position);
+            }
+
         }
 
 

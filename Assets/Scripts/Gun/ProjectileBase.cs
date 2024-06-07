@@ -8,6 +8,8 @@ public class ProjectileBase : MonoBehaviour
     public int damageAmount = 1;
     public float speed = 30f;
 
+    public List<string> tagsToHit;
+
     private void Awake()
     {
         Destroy(gameObject, timeToDestroy);
@@ -21,22 +23,35 @@ public class ProjectileBase : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        var projectile = collision.collider.GetComponent<ProjectileBase>(); //verifica se houve colisao com o projetil
-
-        if (projectile != null) return; //se o projetil colidiu com si mesmo, nao faz a proxima parte do codigo
-        
-        
-        var damageable = collision.transform.GetComponent<IDamageable>();
-
-        if (damageable != null)
+        foreach (var t in tagsToHit)
         {
-            Vector3 dir = collision.transform.position - transform.position; //identifica a direção da colisao e calcula para onde mover o inimigo
-            dir = -dir.normalized; //retorna o vetor para 1 independente da conta anterior
-            dir.y = 0;
+            if (collision.transform.tag == t)
+            {
 
-            damageable.Damage(damageAmount, dir);
+                var projectile = collision.collider.GetComponent<ProjectileBase>(); //verifica se houve colisao com o projetil
+
+                if (projectile != null) return; //se o projetil colidiu com si mesmo, nao faz a proxima parte do codigo
+
+
+                var damageable = collision.transform.GetComponent<IDamageable>();
+
+                if (damageable != null)
+                {
+                    Vector3 dir = collision.transform.position - transform.position; //identifica a direção da colisao e calcula para onde mover o inimigo
+                    dir = -dir.normalized; //retorna o vetor para 1 independente da conta anterior
+                    dir.y = 0;
+
+                    damageable.Damage(damageAmount, dir);
+
+                }
+
+                break;
+
+            }
 
         }
+
         Destroy(gameObject);
+
     }
 }
