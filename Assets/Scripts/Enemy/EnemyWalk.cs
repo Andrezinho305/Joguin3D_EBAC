@@ -17,8 +17,10 @@ namespace Enemy
         private int _index = 0;
 
 
-        private void Update()
+        public override void Update()
         {
+            base.Update();
+
             if(Vector3.Distance(transform.position, waypoints[_index].transform.position) < minDistance) //verifica se a posição atual em relação ao waypoint é menor que o definido
             {
                 _index++;

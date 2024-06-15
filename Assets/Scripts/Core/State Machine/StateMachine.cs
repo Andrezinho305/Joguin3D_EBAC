@@ -57,14 +57,14 @@ namespace Core.StateMachine
         }
 
 
-        public void SwitchState(T state)
+        public void SwitchState(T state, params object[] objs) //ao se utilizar o params, pode ser definida uma lista de parametros a serem analisados e lidos
         {
 
             if (_currentState != null) _currentState.OnStateExit(); //se o state não é null, termina o state atual
 
             _currentState = dictionaryState[state]; //define novo state
 
-            _currentState.OnStateEnter(); //identifica para o objeto o novo state
+            _currentState.OnStateEnter(objs); //identifica para o objeto o novo state
 
         }
 
