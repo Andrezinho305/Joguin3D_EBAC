@@ -15,10 +15,6 @@ namespace Boss
             base.OnStateEnter(objs);
             boss = (BossBase)objs[0]; //o primeiro parametro recebido quando inicializado é o script de boss, 0 no index de params
         }
-
-
-
-
     }
 
     public class BossStateInit : BossStateBase

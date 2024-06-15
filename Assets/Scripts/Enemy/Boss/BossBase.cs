@@ -72,7 +72,6 @@ namespace Boss
         private void OnBossKill(HealthBase h)
         {
            SwitchStates(BossActions.DEATH);
-
         }
 
 
@@ -142,8 +141,7 @@ namespace Boss
         #region Debug
 
         [NaughtyAttributes.Button]
-        private void SwitchInit()
-
+        public void SwitchInit()
         {
             SwitchStates(BossActions.INIT);
         }        
