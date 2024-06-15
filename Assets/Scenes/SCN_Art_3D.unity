@@ -14336,7 +14336,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2042108488}
-  - component: {fileID: 2042108487}
   - component: {fileID: 2042108489}
   m_Layer: 0
   m_Name: BossSpawnZone
@@ -14345,19 +14344,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &2042108487
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042108486}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 69.32025, y: 30, z: 97.36788}
-  m_Center: {x: 9.660126, y: 0, z: 21.023273}
 --- !u!4 &2042108488
 Transform:
   m_ObjectHideFlags: 0
