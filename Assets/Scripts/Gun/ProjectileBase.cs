@@ -23,15 +23,15 @@ public class ProjectileBase : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-                var projectile = collision.collider.GetComponent<ProjectileBase>(); //verifica se houve colisao com o projetil
+        var projectile = collision.collider.GetComponent<ProjectileBase>(); //verifica se houve colisao com o projetil
 
-                if (projectile != null) return; //se o projetil colidiu com si mesmo, nao faz a proxima parte do codigo
-        foreach (var t in tagsToHit)
+        if (projectile != null) return; //se o projetil colidiu com si mesmo, nao faz a proxima parte do codigo
+
+
+        foreach (var t in tagsToHit) //verifica a lista de tags
         {
-            if (collision.transform.tag == t)
+            if (collision.transform.tag == t) //só causa dano/tem colisao caso o item esteja na lista de tags
             {
-
-
                 var damageable = collision.transform.GetComponent<IDamageable>();
 
                 if (damageable != null)
