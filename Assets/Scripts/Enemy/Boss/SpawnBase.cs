@@ -10,6 +10,7 @@ public class SpawnBase : MonoBehaviour
     public Boss.BossBase _boss;
 
     private Player _player;
+    private Coroutine coroutine;
 
 
     private void OnTriggerEnter(Collider other)
@@ -21,7 +22,7 @@ public class SpawnBase : MonoBehaviour
             var spawn = Instantiate(bossPrefab);
             spawn.transform.position = bossSpawnPosition.position;
             _boss = spawn.GetComponentInChildren<Boss.BossBase>();
-            StartCoroutine(SpawnCourroutine());
+            coroutine = StartCoroutine(SpawnCourroutine());
         }
 
     }
@@ -35,14 +36,21 @@ public class SpawnBase : MonoBehaviour
     }
 
 
-    private void OnTriggerExit(Collider other) //nao esta funcionando
+    private void OnTriggerExit(Collider other)
     {
         Player p = other.transform.GetComponent<Player>();
+        Debug.Log("Out of boss range");
 
-        if (p == null)
+        if (p != null)
         {
 
-            Destroy(bossPrefab);
+            Destroy(_boss.gameObject);//destroi a instancia spawnada do _boss, nao o prefab
+
+            if(coroutine!=null) //verifica se a corrotina esta ainda rodando e mata ela para evitar de rodar algo que nao existe
+            {
+                StopCoroutine(coroutine);
+                coroutine = null;
+            }
         }
 
 
