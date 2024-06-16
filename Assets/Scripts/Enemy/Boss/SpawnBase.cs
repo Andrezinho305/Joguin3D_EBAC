@@ -36,9 +36,16 @@ public class SpawnBase : MonoBehaviour
     }
 
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other) //nao esta funcionando
     {
-        Destroy(bossPrefab);
+        Player p = other.transform.GetComponent<Player>();
+
+        if (p == null)
+        {
+
+            Destroy(bossPrefab);
+        }
+
 
 
     }

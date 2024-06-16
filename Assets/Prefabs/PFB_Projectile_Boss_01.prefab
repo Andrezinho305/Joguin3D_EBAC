@@ -94,8 +94,8 @@ GameObject:
   - component: {fileID: -4750645100403812967}
   - component: {fileID: 3018085306041012907}
   m_Layer: 0
-  m_Name: PFB_Projectile
-  m_TagString: Projectile
+  m_Name: PFB_Projectile_Boss_01
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 8388513577524632625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 404.21667, y: -1.4, z: 62.42}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 5549745142738148514}
   m_Father: {fileID: 0}
@@ -131,7 +131,7 @@ MonoBehaviour:
   damageAmount: 5
   speed: 50
   tagsToHit:
-  - Enemy
+  - Player
 --- !u!54 &-4750645100403812967
 Rigidbody:
   m_ObjectHideFlags: 0
