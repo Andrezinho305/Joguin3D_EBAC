@@ -36,7 +36,8 @@ namespace Boss
 
         [Header("Attack")]
         public int attackAmmo = 5;
-        public float timeBetweenAttacks = .5f;
+        //public float timeBetweenAttacks = .5f;
+        public GunBase gunBase;
 
         public bool lookAtPlayer = false;
         private Player _player;
@@ -101,6 +102,7 @@ namespace Boss
         public void StartAttack(Action endCallback = null)
         {
             StartCoroutine(StartAttackCorroutine(endCallback));
+            gunBase.StartShoot();
         }
 
         IEnumerator StartAttackCorroutine(Action endCallback)
@@ -109,8 +111,8 @@ namespace Boss
             while (attacks < attackAmmo)
             {
                 attacks++;
-                transform.DOScale(1.1f, .1f).SetLoops(2, LoopType.Yoyo);
-                yield return new WaitForSeconds(timeBetweenAttacks);
+                transform.DOScale(1.1f, .1f).SetLoops(2, LoopType.Yoyo);                
+                yield return new WaitForSeconds(gunBase.timeBetweenShots);
 
             }
 
@@ -147,7 +149,7 @@ namespace Boss
         }        
         
         [NaughtyAttributes.Button]
-        private void SwitchWalk()
+        public void SwitchWalk()
         {
             SwitchStates(BossActions.WALK);
         }

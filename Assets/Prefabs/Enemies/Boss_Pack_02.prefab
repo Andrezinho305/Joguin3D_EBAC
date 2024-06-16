@@ -241,18 +241,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
-    - target: {fileID: 3575409232997097128, guid: cf54c971c1fe3f74f9f7b64f8dfb0d02, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3575409232997097131, guid: cf54c971c1fe3f74f9f7b64f8dfb0d02, type: 3}
-      propertyPath: timeBetweenAttacks
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3575409232997097131, guid: cf54c971c1fe3f74f9f7b64f8dfb0d02, type: 3}
-      propertyPath: waypoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3575409232997097131, guid: cf54c971c1fe3f74f9f7b64f8dfb0d02, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
@@ -269,18 +257,22 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[3]
       value: 
       objectReference: {fileID: 1050305408092522618}
-    - target: {fileID: 3575409232997097131, guid: cf54c971c1fe3f74f9f7b64f8dfb0d02, type: 3}
-      propertyPath: waypoints.Array.data[4]
-      value: 
-      objectReference: {fileID: 1050305408092522618}
-    - target: {fileID: 3575409232997097131, guid: cf54c971c1fe3f74f9f7b64f8dfb0d02, type: 3}
-      propertyPath: waypoints.Array.data[5]
-      value: 
-      objectReference: {fileID: 1050305408092522618}
-    - target: {fileID: 3575409232997097131, guid: cf54c971c1fe3f74f9f7b64f8dfb0d02, type: 3}
-      propertyPath: waypoints.Array.data[6]
-      value: 
-      objectReference: {fileID: 1050305408092522618}
+    - target: {fileID: 8723156123067368296, guid: cf54c971c1fe3f74f9f7b64f8dfb0d02, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723156123067368296, guid: cf54c971c1fe3f74f9f7b64f8dfb0d02, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723156123531039612, guid: cf54c971c1fe3f74f9f7b64f8dfb0d02, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723156123531039612, guid: cf54c971c1fe3f74f9f7b64f8dfb0d02, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf54c971c1fe3f74f9f7b64f8dfb0d02, type: 3}
 --- !u!4 &4543297449172439291 stripped

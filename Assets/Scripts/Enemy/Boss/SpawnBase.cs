@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Core.Singleton;
 
 public class SpawnBase : MonoBehaviour
 {
-
-
     public GameObject bossPrefab;
     public Transform bossSpawnPosition;
+    public float waitBeforeAttack = 2f;
     public Boss.BossBase _boss;
 
     private Player _player;
@@ -21,10 +21,24 @@ public class SpawnBase : MonoBehaviour
         {
             var spawn = Instantiate(bossPrefab);
             spawn.transform.position = bossSpawnPosition.position;
-            _boss.SwitchInit();
+            _boss = spawn.GetComponentInChildren<Boss.BossBase>();
+            StartCoroutine(SpawnCourroutine());
         }
 
+    }
 
+    IEnumerator SpawnCourroutine()
+    {
+        _boss.SwitchInit();
+        yield return new WaitForSeconds(waitBeforeAttack);
+        _boss.SwitchWalk();
+        StopCoroutine(SpawnCourroutine()); //nao sei se eh necessario
+    }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        Destroy(bossPrefab);
 
 
     }
