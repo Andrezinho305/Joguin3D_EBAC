@@ -106,7 +106,7 @@ namespace Enemy
             //precisa de um collider, o player controller nao implementa fisica desse jeito
             if (p != null)
             {
-                p.Damage(1);
+                p.healthBase.Damage(1);
             }
         }
 

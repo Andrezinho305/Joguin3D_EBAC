@@ -53,7 +53,9 @@ namespace Boss
         private void Awake()
         {
             Init();
+            OnValidate();
             healthBase.OnKill += OnBossKill;
+
         }
 
 
@@ -73,6 +75,11 @@ namespace Boss
         private void OnBossKill(HealthBase h)
         {
            SwitchStates(BossActions.DEATH);
+        }
+
+        private void OnValidate()
+        {
+            if (healthBase == null) healthBase = GetComponent<HealthBase>();
         }
 
 

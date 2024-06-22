@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GunShootLimit : GunBase
 {
-    public List<GunUI> uiGunUpdater;
+    public List<UIFillUpdate> uiGunUpdater;
 
     public float maxAmmo = 5f;
     public float timeToReload = 1f;
@@ -79,7 +79,7 @@ public class GunShootLimit : GunBase
 
     private void GetAllUIs() //ineficiente, pesado, mas funciona para opções pequenas
     {
-        uiGunUpdater = GameObject.FindObjectsOfType<GunUI>().ToList();
+        uiGunUpdater = GameObject.FindObjectsOfType<UIFillUpdate>().ToList();
     }
 
 }
