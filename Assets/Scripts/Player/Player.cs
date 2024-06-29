@@ -114,6 +114,7 @@ public class Player : MonoBehaviour//, IDamageable
     {
         //Damage(damage);
     }
+
     private void OnKill(HealthBase h)
     {
         if (_alive)
@@ -123,10 +124,44 @@ public class Player : MonoBehaviour//, IDamageable
             animator.SetTrigger("Death");
 
             colliders.ForEach(i => i.enabled = false); //desativa todos os coliders dentro da lista
-        }
 
+            Invoke(nameof(Revive), 3f); //puxa o code de revive após 3 segundos
+        }
+    }
+
+    private void Revive()
+    {
+        healthBase.ResetLife();
+        animator.SetTrigger("Revive");
+        Respawn();
+        _alive = true;
+        Invoke(nameof(TurnOnColliders), .1f);
+    }
+
+    private void TurnOnColliders()
+    {
+        colliders.ForEach(i => i.enabled = true);
 
     }
 
+
     #endregion
+
+    #region Respawn System
+
+    [NaughtyAttributes.Button]
+    public void Respawn()
+    {
+        if(CheckpointManager.Instance.HasCheckpoint())
+        {
+            transform.position = CheckpointManager.Instance.LastCheckpointPosition();
+        }
+    }
+
+    #endregion
+
+
+
 }
+
+

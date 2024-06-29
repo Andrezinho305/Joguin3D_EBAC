@@ -401,6 +401,7 @@ MonoBehaviour:
   startLife: 10
   destroyOnKill: 1
   _currentLife: 0
+  healthUpdater: []
 --- !u!1 &3575409233796358153
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,7 +1100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5876459122005825488, guid: 77c7433d3aff9f740862d0b5f4de5080, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5876459122750244804, guid: 77c7433d3aff9f740862d0b5f4de5080, type: 3}
       propertyPath: m_RootOrder

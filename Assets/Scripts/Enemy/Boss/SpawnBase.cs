@@ -39,7 +39,6 @@ public class SpawnBase : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         Player p = other.transform.GetComponent<Player>();
-        Debug.Log("Out of boss range");
 
         if (p != null)
         {
