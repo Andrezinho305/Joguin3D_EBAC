@@ -16,7 +16,7 @@ public class GunShootLimit : GunBase
 
     private void Awake()
     {
-        GetAllUIs();
+        GetUIs();
     }
 
 
@@ -77,9 +77,15 @@ public class GunShootLimit : GunBase
         uiGunUpdater.ForEach(i => i.UpdateValue(maxAmmo, _currentShots));
     }
 
-    private void GetAllUIs() //ineficiente, pesado, mas funciona para opções pequenas
+
+    private void GetUIs() //ineficiente, pesado, mas funciona para opções pequenas
     {
-        uiGunUpdater = GameObject.FindObjectsOfType<UIFillUpdate>().ToList();
+        //uiGunUpdater = GameObject.FindObjectsOfType<UIFillUpdate>().ToList(); //original, pega todos os objetos que existem com esse script
+
+
+        uiGunUpdater = GameObject.Find("UI_Ammo").GetComponents<UIFillUpdate>().ToList(); // revisado, pega apenas 1 item
+
     }
+
 
 }

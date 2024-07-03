@@ -66,6 +66,8 @@ public class HealthBase : MonoBehaviour,IDamageable
     private void UpdateUI()
     {
         if (healthUpdater != null)
-            healthUpdater.ForEach(i =>  i.UpdateValue((float)_currentLife/startLife));
+        {
+            healthUpdater.ForEach(i => i.UpdateValue((float)_currentLife / startLife));
+        }
     }
 }
