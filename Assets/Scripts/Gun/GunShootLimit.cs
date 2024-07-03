@@ -84,6 +84,9 @@ public class GunShootLimit : GunBase
 
 
         uiGunUpdater = GameObject.Find("UI_Ammo").GetComponents<UIFillUpdate>().ToList(); // revisado, pega apenas 1 item
+        uiGunUpdater = GameObject.Find("UI_Ammo_Screen").GetComponents<UIFillUpdate>().ToList(); // revisado, pega apenas 1 item
+
+        //está pegando o ultimo item
 
     }
 

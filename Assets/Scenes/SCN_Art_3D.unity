@@ -14495,7 +14495,7 @@ GameObject:
   - component: {fileID: 1931114677}
   - component: {fileID: 1931114676}
   m_Layer: 5
-  m_Name: UI_Ammo
+  m_Name: UI_Ammo_Screen
   m_TagString: UI_Ammo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15711,8 +15711,8 @@ MonoBehaviour:
   _currentLife: 0
   healthUpdater:
   - {fileID: 890752151}
-  - {fileID: 39022862}
   - {fileID: 1248133361}
+  - {fileID: 39022862}
 --- !u!1001 &2076431801
 PrefabInstance:
   m_ObjectHideFlags: 0
