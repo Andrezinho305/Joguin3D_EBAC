@@ -6,6 +6,8 @@ using DG.Tweening;
 
 public class UIFillUpdate : MonoBehaviour
 {
+    public UIFillUpdateType uiUpdateType;
+
     public Image uiImage;
 
     [Header("Animations")]
@@ -13,6 +15,7 @@ public class UIFillUpdate : MonoBehaviour
     public Ease ease = Ease.OutBack;
 
     private Tween _currTween;
+
 
     private void OnValidate()
     {
@@ -29,5 +32,11 @@ public class UIFillUpdate : MonoBehaviour
         if (_currTween != null) _currTween.Kill();
         uiImage.DOFillAmount(1 - (current / max), duration).SetEase(ease);
     }
+}
 
+
+public enum UIFillUpdateType
+{
+    Ammo,
+    Health
 }
