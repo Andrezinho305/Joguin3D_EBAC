@@ -95,7 +95,6 @@ public class GunShootLimit : GunBase
         //nao eh uma pratica boa procurar objetos pelo seu nome, pode levar a conflitos
 
 
-
     }
 
 
