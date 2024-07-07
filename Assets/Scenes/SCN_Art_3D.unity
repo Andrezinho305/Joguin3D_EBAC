@@ -2959,7 +2959,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453870726}
-  m_LocalRotation: {x: 0.17574964, y: 0.000000025703896, z: -0.000000004588877, w: 0.9844349}
+  m_LocalRotation: {x: 0.17574964, y: 0.000000025704091, z: -0.0000000045889115, w: 0.9844349}
   m_LocalPosition: {x: 15.36319, y: -5.369305, z: -12.564869}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7771,8 +7771,8 @@ MonoBehaviour:
   m_ZDamping: 1
   m_AngularDampingMode: 0
   m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
+  m_YawDamping: 3
+  m_RollDamping: 4.5
   m_AngularDamping: 0
 --- !u!114 &1078879708
 MonoBehaviour:
@@ -7795,7 +7795,7 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
+  m_DeadZoneHeight: 0.005882353
   m_SoftZoneWidth: 0.8
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
@@ -11073,7 +11073,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500100153}
-  m_LocalRotation: {x: 0.17574964, y: 0.000000025703896, z: -0.000000004588877, w: 0.9844349}
+  m_LocalRotation: {x: 0.17574964, y: 0.000000025704091, z: -0.0000000045889115, w: 0.9844349}
   m_LocalPosition: {x: 4.5269775, y: 1.9567237, z: -0.23592377}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -12447,7 +12447,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1662913635}
-  m_LocalRotation: {x: 0.0000000063156924, y: 0.95229554, z: -0.30517742, w: 0.0000000197079}
+  m_LocalRotation: {x: 0.000000005506859, y: 0.95229554, z: -0.30517742, w: 0.000000017183963}
   m_LocalPosition: {x: 4.638611, y: 1.9162998, z: 14.474388}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -17093,7 +17093,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125951039}
-  m_LocalRotation: {x: 0.0059059667, y: 0.99134743, z: -0.047974795, w: 0.12204046}
+  m_LocalRotation: {x: 0.005905967, y: 0.99134743, z: -0.047974795, w: 0.12204045}
   m_LocalPosition: {x: 4.638611, y: -2.0837002, z: 17.474388}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -17894,7 +17894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7743616558396971664, guid: eb479b16508c41741903bab57743cca0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7743616558396971665, guid: eb479b16508c41741903bab57743cca0, type: 3}
       propertyPath: lookAtPlayer
