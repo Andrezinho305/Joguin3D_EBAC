@@ -109,6 +109,7 @@ public class Player : MonoBehaviour//, IDamageable
     {
         flashColor.ForEach(i => i.Flash());
         EffectsManager.Instance.ChangeVignette();
+        CameraShake.Instance.Shake();
     }
 
     public void Damage(float damage, Vector3 dir)
