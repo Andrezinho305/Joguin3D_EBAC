@@ -4,35 +4,63 @@ using UnityEngine;
 using TMPro;
 using Core.Singleton;
 
-public class ItemManager : Singleton<ItemManager>
+namespace Collectables
 {
-    public SOInt coins;
-    public SOInt Life;
-    public TextMeshProUGUI textCoins;
-    public TextMeshProUGUI textLife;
-
-    private void Start()
+    public enum ItemType
     {
-        Reset();
+        COIN,
+        LIFE_PACK
     }
 
-    private void Reset()
+    public class ItemManager : Singleton<ItemManager>
     {
-        coins.value = 0;
-        Life.value = 3;
-        textCoins.text = "x 0";
-        textLife.text = "x 3";
+        public List<ItemSettup> itemSettups;
+
+        private void Start()
+        {
+            Reset();
+        }
+
+        private void Reset()
+        {
+            foreach (var i in itemSettups) i.soInt.value = 0;
+        }
+
+        public void AddByType(ItemType itemType,  int ammount = 1)
+        {
+            if (ammount < 0) return;
+            itemSettups.Find(i=>i.itemType == itemType).soInt.value += ammount;
+        }
+
+        public void RemoveByType(ItemType itemType, int ammount = 1)
+        {
+            if (ammount > 0) return;
+
+            var item = itemSettups.Find(i => i.itemType == itemType);
+            item.soInt.value -= ammount;
+
+            if (item.soInt.value < 0) item.soInt.value = 0;
+        }
+
+        [NaughtyAttributes.Button]
+        private void AddCoin()
+        {
+            AddByType(ItemType.COIN);
+        }
+
+        [NaughtyAttributes.Button]
+        private void AddLifePack()
+        {
+            AddByType(ItemType.LIFE_PACK);
+        }
+
     }
 
-    public void AddCoin(int ammout = 1) //permite que em ocasioes especiais o ammout seja alterado quando a função é chamada Ex.: Addcoin(5) -> moeda agora vale 5
+    [System.Serializable]
+    public class ItemSettup
     {
-        coins.value += ammout;
-        textCoins.text = "x " + coins.value.ToString();
-    }
+        public ItemType itemType;
+        public SOInt soInt;
 
-    public void AddLife(int life = 1) //permite que em ocasioes especiais o ammout seja alterado quando a função é chamada Ex.: Addcoin(5) -> moeda agora vale 5
-    {
-        Life.value += life;
-        textLife.text = "x " + Life.value.ToString();
     }
 }

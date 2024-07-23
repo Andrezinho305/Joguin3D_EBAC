@@ -27,7 +27,6 @@ public class BaseCollectable : MonoBehaviour
         if (graphicItem != null) graphicItem.SetActive(false);
         Invoke("HideObject", timeToHide);
         OnCollectCoins();
-        OnCollectLife();
     }
 
     private void HideObject()
@@ -45,11 +44,6 @@ public class BaseCollectable : MonoBehaviour
         }
 
         if (audioSource != null) audioSource.Play();
-    }
-
-    protected virtual void OnCollectLife()
-    {
-
     }
 
 }
