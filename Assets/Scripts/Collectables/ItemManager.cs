@@ -30,12 +30,15 @@ namespace Collectables
         {
             if (ammount < 0) return;
             itemSettups.Find(i=>i.itemType == itemType).soInt.value += ammount;
+        }        
+        
+        public ItemSettup GetItemByType(ItemType itemType)
+        {
+            return itemSettups.Find(i=>i.itemType == itemType);
         }
 
         public void RemoveByType(ItemType itemType, int ammount = 1)
         {
-            if (ammount > 0) return;
-
             var item = itemSettups.Find(i => i.itemType == itemType);
             item.soInt.value -= ammount;
 

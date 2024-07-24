@@ -8,7 +8,7 @@ namespace Core.Singleton
     {
         public static T Instance;
 
-        private void Awake() //roda no momento que o jogo/código inicia
+        protected virtual void Awake() //roda no momento que o jogo/código inicia
         {
             if (Instance == null)
                 Instance = GetComponent<T>(); //a instancia é igual ao script criado
