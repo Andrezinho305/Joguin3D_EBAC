@@ -6,9 +6,9 @@ using Collectables;
 public class CollectCoins : BaseCollectable
 {
 
-    protected override void OnCollectCoins()
+    protected override void OnCollect()
     {
-        base.OnCollectCoins();
+        base.OnCollect();
         ItemManager.Instance.AddByType(ItemType.COIN);
         collider.enabled = false;
     }

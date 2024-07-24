@@ -2,48 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseCollectable : MonoBehaviour
+namespace Collectables
 {
-    public string compareTag = "Player";
-    public ParticleSystem particleSystem;
-    public float timeToHide = 1f;
-    public GameObject graphicItem;
-    public Collider collider;
-
-    public AudioSource audioSource;
-
-
-    private void OnTriggerEnter(Collider collision)
+    public class BaseCollectable : MonoBehaviour
     {
-        if (collision.transform.CompareTag(compareTag))
+        public ItemType itemType;
+
+        public string compareTag = "Player";
+        public ParticleSystem particleSystem;
+        public float timeToHide = 1f;
+        public GameObject graphicItem;
+        public Collider collider;
+
+        public AudioSource audioSource;
+
+
+        private void OnTriggerEnter(Collider collision)
         {
-            Collect();
-        }
-    }
-
-    protected virtual void Collect()
-    {
-        gameObject.SetActive(false);
-        if (graphicItem != null) graphicItem.SetActive(false);
-        Invoke("HideObject", timeToHide);
-        OnCollectCoins();
-    }
-
-    private void HideObject()
-    {
-        gameObject.SetActive(false);
-    }
-
-    protected virtual void OnCollectCoins()
-    {
-        if (particleSystem != null)
-        {
-            particleSystem.transform.SetParent(null);
-            particleSystem.Play();
-            Destroy(particleSystem.gameObject, 2f);
+            if (collision.transform.CompareTag(compareTag))
+            {
+                Collect();
+            }
         }
 
-        if (audioSource != null) audioSource.Play();
-    }
+        protected virtual void Collect()
+        {
+            gameObject.SetActive(false);
+            if (graphicItem != null) graphicItem.SetActive(false);
+            Invoke("HideObject", timeToHide);
+            OnCollect();
+        }
 
+        private void HideObject()
+        {
+            gameObject.SetActive(false);
+        }
+
+        protected virtual void OnCollect()
+        {
+            if (particleSystem != null)
+            {
+                particleSystem.transform.SetParent(null);
+                particleSystem.Play();
+                Destroy(particleSystem.gameObject, 2f);
+            }
+
+            if (audioSource != null) audioSource.Play();
+
+            ItemManager.Instance.AddByType(itemType);
+        }
+
+    }
 }
