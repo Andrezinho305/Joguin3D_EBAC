@@ -16,7 +16,7 @@ public class Player : Singleton<Player>//, IDamageable
     public float jumpSpeed = 15f;
     public float gravity = 9.8f;
     private float vSpeed = 0f;
-    public KeyCode jumpKeyCode = KeyCode.Space;
+    public KeyCode jumpKeyCode = KeyCode.Space; 
 
     [Header("Runing")]
     public KeyCode keyRun = KeyCode.LeftShift;
