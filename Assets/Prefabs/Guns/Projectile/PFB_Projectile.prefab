@@ -132,6 +132,7 @@ MonoBehaviour:
   speed: 50
   tagsToHit:
   - Enemy
+  - Destructable
 --- !u!54 &-4750645100403812967
 Rigidbody:
   m_ObjectHideFlags: 0
