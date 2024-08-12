@@ -44,7 +44,6 @@ public class ProjectileBase : MonoBehaviour
                 }
             }
 
-            break;
         }
 
         Destroy(gameObject);

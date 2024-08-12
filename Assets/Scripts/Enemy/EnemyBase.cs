@@ -16,6 +16,8 @@ namespace Enemy
 
         public float startLife = 10f;
 
+        public float dealtDamage = 5;
+
         public bool lookAtPlayer = false;
 
         private Player _player;
@@ -106,7 +108,7 @@ namespace Enemy
             //precisa de um collider, o player controller nao implementa fisica desse jeito
             if (p != null)
             {
-                p.healthBase.Damage(1);
+                p.healthBase.Damage(dealtDamage);
             }
         }
 
