@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Core.Singleton;
+using Cloth;
 
 public class Player : Singleton<Player>//, IDamageable
 {
@@ -33,6 +34,9 @@ public class Player : Singleton<Player>//, IDamageable
     public HealthBase healthBase;
 
     private bool _alive = true;
+
+    [Space]
+    [SerializeField] private ClotheChanger _clotheChanger;
 
 
     protected override void Awake()
@@ -98,6 +102,31 @@ public class Player : Singleton<Player>//, IDamageable
 
     }
 
+    public void ChangeSpeed(float speed, float duration)
+    {
+        StartCoroutine(ChangeSpeedCourroutine(speed, duration));
+    }
+
+    IEnumerator ChangeSpeedCourroutine(float localSpeed, float duration)
+    {
+        var defaultSpeed = speed;
+        speed = localSpeed;
+
+        yield return new WaitForSeconds(duration);
+        speed = defaultSpeed;
+    }
+
+    public void ChangeTexture (ClothSettup settup, float duration)
+    {
+        StartCoroutine(ChangeClothCourroutine(settup, duration));
+    }
+
+    IEnumerator ChangeClothCourroutine(ClothSettup settup, float duration)
+    {
+        _clotheChanger.ChangeTexture(settup);
+        yield return new WaitForSeconds(duration);
+        _clotheChanger.ResetTexture();
+    }
 
 
     #region Life & Damage Taken
