@@ -1,11 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using Cloth;
 
 public class HealthBase : MonoBehaviour,IDamageable
 {
     public float startLife = 10f;
     public bool destroyOnKill = false;
+
+    public float damageMultiply = 1;
 
     [SerializeField] private float _currentLife;
 
@@ -48,7 +52,7 @@ public class HealthBase : MonoBehaviour,IDamageable
 
     public void Damage(float f)
     {
-        _currentLife -= f;
+        _currentLife -= f * damageMultiply;
 
         if (_currentLife <= 0)
         {
@@ -71,4 +75,17 @@ public class HealthBase : MonoBehaviour,IDamageable
             healthUpdater.ForEach(i => i.UpdateValue((float)_currentLife / startLife));
         }
     }
+
+    public void ChangeDamageMult(float damageMult, float duration)
+    {
+        StartCoroutine(ChangeDamageMultCourroutine(damageMult, duration));
+    }
+
+    IEnumerator ChangeDamageMultCourroutine(float damageMult, float duration)
+    {
+        this.damageMultiply = damageMult;
+        yield return new WaitForSeconds(duration);
+        this.damageMultiply = 1;
+    }
+
 }

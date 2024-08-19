@@ -9,7 +9,7 @@ namespace Cloth
     public enum ClothType
     {
         SPEED,
-        NEUTRAL
+        STRONG
 
     }
 
