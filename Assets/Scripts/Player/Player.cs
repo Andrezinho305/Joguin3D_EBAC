@@ -34,6 +34,7 @@ public class Player : Singleton<Player>//, IDamageable
     public HealthBase healthBase;
 
     private bool _alive = true;
+    private bool _isJumping = false;
 
     [Space]
     [SerializeField] private ClotheChanger _clotheChanger;
@@ -59,10 +60,24 @@ public class Player : Singleton<Player>//, IDamageable
 
         if (characterController.isGrounded) //handler do pulo
         {
+
+            if(_isJumping)
+            {
+                _isJumping = false;
+                animator.SetTrigger("Landing");
+            }
+
             vSpeed = 0; //
             if (Input.GetKeyDown(jumpKeyCode))
             {
                 vSpeed = jumpSpeed; //define velocidade vertical como 0
+
+                if(!_isJumping)
+                {
+                    _isJumping = true;
+                    animator.SetTrigger("Jump");
+                }
+
             }
         }
 
