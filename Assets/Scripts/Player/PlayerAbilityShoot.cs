@@ -17,6 +17,8 @@ public class PlayerAbilityShoot : PlayerAbilityBase
     private List<GunBase> gunInstances;
     private int gunIndex = 0;
 
+    public FlashColour flashColor;
+
     
 
     protected override void Init()
@@ -60,7 +62,7 @@ public class PlayerAbilityShoot : PlayerAbilityBase
     private void StartShoot()
     {
         _currentGun.StartShoot();
-
+        flashColor?.Flash(); //?. = if(xx != null)
         CameraShake.Instance.Shake();
     }
 
