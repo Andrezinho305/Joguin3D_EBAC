@@ -36,6 +36,11 @@ public class Player : Singleton<Player>//, IDamageable
     private bool _alive = true;
     private bool _isJumping = false;
 
+    [Header("Inventory")]
+    public KeyCode activateInventoryKey = KeyCode.I;
+    public GameObject inventory;
+    private bool _invActive;
+
     [Space]
     [SerializeField] private ClotheChanger _clotheChanger;
 
@@ -47,6 +52,10 @@ public class Player : Singleton<Player>//, IDamageable
 
         healthBase.OnDamage += Damage;
         healthBase.OnKill += OnKill;
+
+
+        _invActive = false;
+        inventory.SetActive(_invActive);
     }
 
 
@@ -105,7 +114,7 @@ public class Player : Singleton<Player>//, IDamageable
 
 
         animator.SetBool("Run", inputAxisVertical != 0); //se a relação eh true, define a bool como true
-        //funciona igual aos ifs
+                                                         //funciona igual aos ifs
         /*if (inputAxisVertical != 0)
         {
             animator.SetBool("Run", true);
@@ -114,6 +123,13 @@ public class Player : Singleton<Player>//, IDamageable
         {
             animator.SetBool("Run", false);
         }*/
+
+        #region Inventory control
+        if (Input.GetKeyDown(activateInventoryKey))
+            {
+                inventory.SetActive(!inventory.activeSelf); //busca o estado atual do game object e inverte ele
+            }
+        #endregion
 
     }
 

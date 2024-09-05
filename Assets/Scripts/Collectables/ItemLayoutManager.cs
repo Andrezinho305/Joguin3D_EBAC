@@ -17,6 +17,7 @@ namespace Collectables
         }
 
 
+        
         private void CreateItens()
         {
             foreach(var settup in ItemManager.Instance.itemSettups)

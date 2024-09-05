@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Animation;
+using UnityEngine.Events;
 
 
 namespace Enemy
@@ -32,6 +33,8 @@ namespace Enemy
         [Header("Animations")]
         [SerializeField] private AnimationBase _animationBase;
 
+        [Header("Event")]
+        public UnityEvent onKillEvent;
 
         private void Awake()
         {
@@ -65,12 +68,14 @@ namespace Enemy
 
         protected virtual void OnKill()
         {
+
             if (collider != null) collider.enabled = false;
 
 
             Destroy(gameObject, 3f);
             PlayAnimationByTrigger(AnimationType.DEATH);
 
+            onKillEvent?.Invoke(); //quando o inimigo morre, ativa um evento descrito no editor
 
         }
 
