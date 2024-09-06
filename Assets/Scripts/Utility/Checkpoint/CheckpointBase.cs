@@ -56,7 +56,9 @@ public class CheckpointBase : MonoBehaviour
             PlayerPrefs.SetInt(checkpointKey, key);*/
 
         CheckpointManager.Instance.SaveCheckpoint(key);
-        
+
+        SaveManager.Instance.SaveLastCheckpoint(key);
+
         _isActive = true;
 
     }

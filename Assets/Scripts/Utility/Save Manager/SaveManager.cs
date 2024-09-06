@@ -37,6 +37,7 @@ using Core.Singleton;
     public void SaveLastLevel(int level)
     {
         _saveSetup.lastLevel = level;
+        SaveCollectables();
         Save();
     }
 
@@ -49,7 +50,16 @@ using Core.Singleton;
     public void SaveLastCheckpoint(int checkpoint)
     {
         _saveSetup.lastCheckpoint = checkpoint;
+        SaveCollectables();
         Save();
+    }
+
+    public void SaveCollectables()
+    {
+        _saveSetup.coins = Collectables.ItemManager.Instance.GetItemByType(Collectables.ItemType.COIN).soInt.value;
+        _saveSetup.lifePacks = Collectables.ItemManager.Instance.GetItemByType(Collectables.ItemType.LIFE_PACK).soInt.value;
+        Save();
+
     }
 
 
@@ -101,6 +111,9 @@ public class SaveSetup
     public int lastLevel;
     public int lastCheckpoint;
     public string playerName;
+    public int coins;
+    public int lifePacks;
+    public int objective;
 
 
 
