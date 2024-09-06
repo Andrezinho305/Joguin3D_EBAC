@@ -25,6 +25,7 @@ public class EndGame : MonoBehaviour
         if (!_endGame && p != null)
         {
             ShowEndGame(); //roda a função quando identifica o player na area
+            Debug.Log("in");
         }
     }
 

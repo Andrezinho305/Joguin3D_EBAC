@@ -12,6 +12,8 @@ using Core.Singleton;
     {
         base.Awake();
 
+        DontDestroyOnLoad(gameObject); //nao eh destruido quando a cena eh carregada/trocada
+
         _saveSetup = new SaveSetup();
 
         _saveSetup.lastLevel = 0;
