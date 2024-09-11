@@ -3,23 +3,51 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using Core.Singleton;
+using System;
 
-    public class SaveManager : Singleton<SaveManager>
+public class SaveManager : Singleton<SaveManager>
 {
+    [SerializeField]
     private SaveSetup _saveSetup;
+ 
+    //private string _path = Application.dataPath + "/save.txt"; // a / eh importante para garantir que salva dentro da pasta de assets
+                                                               //salva dentro dos assets do projeto
+
+    //string path = Application.persistentDataPath + "/save.txt";
+    //guarda dentro de arquivos do servidor do computador -- dentro do usuario
+
+    private string _path = Application.streamingAssetsPath + "/save.txt";
+    //guarda na pasta de streming assets dentro do projeto -- precisa ser criada manualmente
+
+    public int lastLevel;
+
+    public Action<SaveSetup> FileLoaded;
+
+    public SaveSetup Setup
+    {
+        get { return _saveSetup; }
+    }
+
 
     protected override void Awake()
     {
         base.Awake();
 
         DontDestroyOnLoad(gameObject); //nao eh destruido quando a cena eh carregada/trocada
+    }
 
+    private void CreateNewSave()
+    {
         _saveSetup = new SaveSetup();
 
         _saveSetup.lastLevel = 0;
         _saveSetup.playerName = "Joras";
         _saveSetup.lastCheckpoint = 0;
+    }
 
+    private void Start()
+    {
+        Invoke(nameof(Load), .1f);
     }
 
     #region SAVE
@@ -59,7 +87,6 @@ using Core.Singleton;
         _saveSetup.coins = Collectables.ItemManager.Instance.GetItemByType(Collectables.ItemType.COIN).soInt.value;
         _saveSetup.lifePacks = Collectables.ItemManager.Instance.GetItemByType(Collectables.ItemType.LIFE_PACK).soInt.value;
         Save();
-
     }
 
 
@@ -67,22 +94,33 @@ using Core.Singleton;
 
     private void SaveFile(string json)
     {
-        string path = Application.dataPath + "/save.txt"; // a / eh importante para garantir que salva dentro da pasta de assets
-        //salva dentro dos assets do projeto
+        Debug.Log(_path);
+        File.WriteAllText(_path, json);
+    }
 
-        //string path = Application.persistentDataPath + "/save.txt";
-        //guarda dentro de arquivos do servidor do computador -- dentro do usuario
-
-        //string path = Application.streamingAssetsPath + "/save.txt";
-        //guarda na pasta de streming assets dentro do projeto -- precisa ser criada manualmente
-
+    [NaughtyAttributes.Button]
+    private void Load()
+    {
         string fileLoaded = "";
 
-        if (File.Exists(path)) fileLoaded = File.ReadAllText(path);
-        //le primeiro para garantir que nao tem nada salvo anteriormente
+        if (File.Exists(_path))
+        {
+            fileLoaded = File.ReadAllText(_path);
+            //le primeiro para garantir que nao tem nada salvo anteriormente
 
-        Debug.Log(path);
-        File.WriteAllText(path, json);
+            _saveSetup = JsonUtility.FromJson<SaveSetup>(fileLoaded);
+
+            lastLevel = _saveSetup.lastLevel;
+        }
+        else
+        {
+            CreateNewSave();
+            Save();
+        }
+
+
+        FileLoaded.Invoke(_saveSetup);
+
     }
 
     #region DEBUG

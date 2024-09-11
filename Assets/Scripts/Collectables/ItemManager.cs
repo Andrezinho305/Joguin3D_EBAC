@@ -9,7 +9,8 @@ namespace Collectables
     public enum ItemType
     {
         COIN,
-        LIFE_PACK
+        LIFE_PACK,
+        OBJECTIVE
     }
 
     public class ItemManager : Singleton<ItemManager>
@@ -19,6 +20,14 @@ namespace Collectables
         private void Start()
         {
             Reset();
+            LoadItemFromSave();
+        }
+
+        public void LoadItemFromSave()
+        {
+            AddByType(ItemType.COIN, SaveManager.Instance.Setup.coins);
+            AddByType(ItemType.LIFE_PACK, SaveManager.Instance.Setup.coins);
+            AddByType(ItemType.OBJECTIVE, SaveManager.Instance.Setup.coins);       
         }
 
         private void Reset()
