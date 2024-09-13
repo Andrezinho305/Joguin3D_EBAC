@@ -20,14 +20,14 @@ namespace Collectables
         private void Start()
         {
             Reset();
-            LoadItemFromSave();
+            Invoke(nameof(LoadItemFromSave), .1f);
         }
 
         public void LoadItemFromSave()
         {
             AddByType(ItemType.COIN, SaveManager.Instance.Setup.coins);
-            AddByType(ItemType.LIFE_PACK, SaveManager.Instance.Setup.coins);
-            AddByType(ItemType.OBJECTIVE, SaveManager.Instance.Setup.coins);       
+            AddByType(ItemType.LIFE_PACK, SaveManager.Instance.Setup.lifePacks);
+            AddByType(ItemType.OBJECTIVE, SaveManager.Instance.Setup.objective);       
         }
 
         private void Reset()

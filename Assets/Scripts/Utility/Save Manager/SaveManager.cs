@@ -119,7 +119,7 @@ public class SaveManager : Singleton<SaveManager>
         }
 
 
-        FileLoaded.Invoke(_saveSetup);
+        FileLoaded?.Invoke(_saveSetup); 
 
     }
 

@@ -24,8 +24,11 @@ public class CheckpointManager : Singleton<CheckpointManager>
     {
         var checkpoint = checkpoints.Find(i => i.key == lastCheckpointKey);
         return checkpoint.transform.position;
-
     }
 
+    public void LoadCheckpoint()
+    {
+
+    }
 
 }

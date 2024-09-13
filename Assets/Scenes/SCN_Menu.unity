@@ -4539,6 +4539,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 207087397}
     m_Modifications:
+    - target: {fileID: 1014291988589835529, guid: e556976b3a73c7f488da093ef3548b5b, type: 3}
+      propertyPath: _saveSetup.coins
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014291988589835529, guid: e556976b3a73c7f488da093ef3548b5b, type: 3}
+      propertyPath: _saveSetup.lifePacks
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014291988589835529, guid: e556976b3a73c7f488da093ef3548b5b, type: 3}
+      propertyPath: _saveSetup.playerName
+      value: Joras
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014291988589835529, guid: e556976b3a73c7f488da093ef3548b5b, type: 3}
+      propertyPath: _saveSetup.lastCheckpoint
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1014291988589835542, guid: e556976b3a73c7f488da093ef3548b5b, type: 3}
       propertyPath: m_RootOrder
       value: 1
