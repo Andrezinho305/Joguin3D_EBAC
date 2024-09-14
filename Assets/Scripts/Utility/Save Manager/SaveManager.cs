@@ -20,6 +20,7 @@ public class SaveManager : Singleton<SaveManager>
     //guarda na pasta de streming assets dentro do projeto -- precisa ser criada manualmente
 
     public int lastLevel;
+    public int lastCheckpoint;
 
     public Action<SaveSetup> FileLoaded;
 
@@ -86,6 +87,7 @@ public class SaveManager : Singleton<SaveManager>
     {
         _saveSetup.coins = Collectables.ItemManager.Instance.GetItemByType(Collectables.ItemType.COIN).soInt.value;
         _saveSetup.lifePacks = Collectables.ItemManager.Instance.GetItemByType(Collectables.ItemType.LIFE_PACK).soInt.value;
+        _saveSetup.objective = Collectables.ItemManager.Instance.GetItemByType(Collectables.ItemType.OBJECTIVE).soInt.value;
         Save();
     }
 
@@ -111,6 +113,8 @@ public class SaveManager : Singleton<SaveManager>
             _saveSetup = JsonUtility.FromJson<SaveSetup>(fileLoaded);
 
             lastLevel = _saveSetup.lastLevel;
+            lastCheckpoint = _saveSetup.lastCheckpoint;
+
         }
         else
         {

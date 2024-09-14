@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Core.Singleton;
 using Cloth;
+using DG.Tweening;
 
 public class Player : Singleton<Player>//, IDamageable
 {
@@ -41,6 +42,18 @@ public class Player : Singleton<Player>//, IDamageable
     public GameObject inventory;
     private bool _invActive;
 
+    /*[Header("Spawn")] //precisa de um prefab, funcao esta crashando a unity quando inicia o jogo
+    public GameObject playerPrefab;
+    public Transform initSpawn;
+    [Space]
+    public float duration = .2f;
+    public float delay = .05f;
+    public Ease ease = Ease.OutBack;
+
+    private int _lastCheckpointKey;
+    private GameObject _currentPlayer;*/
+
+
     [Space]
     [SerializeField] private ClotheChanger _clotheChanger;
 
@@ -57,9 +70,14 @@ public class Player : Singleton<Player>//, IDamageable
         _invActive = false;
         inventory.SetActive(_invActive);
 
-        Respawn();
+        //SpawnPlayer();
     }
 
+    private void OnValidate()
+    {
+        if (healthBase == null) healthBase = GetComponent<HealthBase>();
+
+    }
 
 
     void Update()
@@ -164,10 +182,6 @@ public class Player : Singleton<Player>//, IDamageable
 
     #region Life & Damage Taken
 
-    private void OnValidate()
-    {
-        if (healthBase == null) healthBase = GetComponent<HealthBase>();
-    }
 
     public void Damage(HealthBase h)
     {
@@ -215,6 +229,24 @@ public class Player : Singleton<Player>//, IDamageable
 
     #region Respawn System
 
+    /*private void SpawnPlayer()
+    {
+        _currentPlayer = Instantiate(playerPrefab);
+
+        _lastCheckpointKey = SaveManager.Instance.lastLevel;
+
+        if(_lastCheckpointKey == 0)
+        {
+            _currentPlayer.transform.position = initSpawn.transform.position;
+        }
+        else
+        {
+            _currentPlayer.transform.position = CheckpointManager.Instance.LastCheckpointPosition();
+        }
+
+        _currentPlayer.transform.DOScale(0, duration).SetEase(ease).From();
+    }*/
+
     [NaughtyAttributes.Button]
     public void Respawn()
     {
@@ -229,5 +261,6 @@ public class Player : Singleton<Player>//, IDamageable
 
 
 }
+
 
 

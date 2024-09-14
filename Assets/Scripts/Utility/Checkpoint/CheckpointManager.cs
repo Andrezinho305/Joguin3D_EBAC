@@ -9,6 +9,11 @@ public class CheckpointManager : Singleton<CheckpointManager>
 
     public List<CheckpointBase> checkpoints;
 
+    private void Awake()
+    {
+        lastCheckpointKey = SaveManager.Instance.lastCheckpoint;
+    }
+
     public bool HasCheckpoint()
     {
         return lastCheckpointKey > 0;
@@ -24,11 +29,6 @@ public class CheckpointManager : Singleton<CheckpointManager>
     {
         var checkpoint = checkpoints.Find(i => i.key == lastCheckpointKey);
         return checkpoint.transform.position;
-    }
-
-    public void LoadCheckpoint()
-    {
-
     }
 
 }
