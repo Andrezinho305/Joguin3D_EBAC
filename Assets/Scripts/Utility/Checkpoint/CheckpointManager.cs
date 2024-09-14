@@ -9,7 +9,7 @@ public class CheckpointManager : Singleton<CheckpointManager>
 
     public List<CheckpointBase> checkpoints;
 
-    private void Awake()
+    private void Start()
     {
         lastCheckpointKey = SaveManager.Instance.lastCheckpoint;
     }

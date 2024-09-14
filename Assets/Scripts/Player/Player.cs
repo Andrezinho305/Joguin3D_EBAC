@@ -70,6 +70,7 @@ public class Player : Singleton<Player>//, IDamageable
         _invActive = false;
         inventory.SetActive(_invActive);
 
+        Respawn();
         //SpawnPlayer();
     }
 

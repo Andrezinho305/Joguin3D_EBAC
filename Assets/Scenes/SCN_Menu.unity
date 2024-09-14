@@ -4541,19 +4541,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1014291988589835529, guid: e556976b3a73c7f488da093ef3548b5b, type: 3}
       propertyPath: lastCheckpoint
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1014291988589835529, guid: e556976b3a73c7f488da093ef3548b5b, type: 3}
       propertyPath: _saveSetup.coins
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1014291988589835529, guid: e556976b3a73c7f488da093ef3548b5b, type: 3}
       propertyPath: _saveSetup.lifePacks
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1014291988589835529, guid: e556976b3a73c7f488da093ef3548b5b, type: 3}
       propertyPath: _saveSetup.objective
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1014291988589835529, guid: e556976b3a73c7f488da093ef3548b5b, type: 3}
       propertyPath: _saveSetup.playerName
@@ -4561,7 +4561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1014291988589835529, guid: e556976b3a73c7f488da093ef3548b5b, type: 3}
       propertyPath: _saveSetup.lastCheckpoint
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1014291988589835542, guid: e556976b3a73c7f488da093ef3548b5b, type: 3}
       propertyPath: m_RootOrder
