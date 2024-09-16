@@ -70,8 +70,13 @@ public class Player : Singleton<Player>//, IDamageable
         _invActive = false;
         inventory.SetActive(_invActive);
 
+        StartCoroutine(DelayedRespawnCourroutine());
+    }
+
+    private IEnumerator DelayedRespawnCourroutine()
+    {
+        yield return null;
         Respawn();
-        //SpawnPlayer();
     }
 
     private void OnValidate()
