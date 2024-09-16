@@ -25050,11 +25050,6 @@ MonoBehaviour:
   healthBase: {fileID: 2074957457}
   activateInventoryKey: 105
   inventory: {fileID: 428828238}
-  playerPrefab: {fileID: 2074957451}
-  initSpawn: {fileID: 1457035003}
-  duration: 0.2
-  delay: 0.05
-  ease: 27
   _clotheChanger: {fileID: 1352954475}
 --- !u!4 &2074957454
 Transform:
@@ -25793,7 +25788,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125951039}
-  m_LocalRotation: {x: 0.005905967, y: 0.99134743, z: -0.047974795, w: 0.12204045}
+  m_LocalRotation: {x: 0.005905967, y: 0.99134743, z: -0.047974795, w: 0.12204046}
   m_LocalPosition: {x: 4.638611, y: -2.0837002, z: 17.474388}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

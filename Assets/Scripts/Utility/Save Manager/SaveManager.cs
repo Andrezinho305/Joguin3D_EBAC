@@ -21,6 +21,7 @@ public class SaveManager : Singleton<SaveManager>
 
     public int lastLevel;
     public int lastCheckpoint;
+    public float savedLife;
 
     public Action<SaveSetup> FileLoaded;
 
@@ -91,7 +92,6 @@ public class SaveManager : Singleton<SaveManager>
         Save();
     }
 
-
     #endregion
 
     private void SaveFile(string json)
@@ -114,7 +114,6 @@ public class SaveManager : Singleton<SaveManager>
 
             lastLevel = _saveSetup.lastLevel;
             lastCheckpoint = _saveSetup.lastCheckpoint;
-
         }
         else
         {
@@ -156,8 +155,5 @@ public class SaveSetup
     public int coins;
     public int lifePacks;
     public int objective;
-
-
-
 
 }
