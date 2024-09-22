@@ -1,9 +1,8 @@
 {
     "lastLevel": 0,
-    "lastCheckpoint": 2,
+    "lastCheckpoint": 1,
     "playerName": "Joras",
-    "coins": 8,
+    "coins": 9,
     "lifePacks": 2,
-    "objective": 1,
-    "life": 0.0
+    "objective": 2
 }
