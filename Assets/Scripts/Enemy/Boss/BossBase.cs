@@ -45,6 +45,11 @@ namespace Boss
         [Header("Health")]
         public HealthBase healthBase;
 
+        [Header("Effects")]
+        public ParticleSystem particleSystem;
+        [Space]
+        public List<FlashColour> flashColor;
+
         private void Start()
         {
             _player = GameObject.FindObjectOfType<Player>();
@@ -55,6 +60,7 @@ namespace Boss
             Init();
             OnValidate();
             if(healthBase!=null)    healthBase.OnKill += OnBossKill;
+            if(healthBase!= null) healthBase.OnDamage += Damage;
 
         }
 
@@ -71,16 +77,22 @@ namespace Boss
 
         }
 
+        private void OnValidate()
+        {
+            if (healthBase == null) healthBase = GetComponent<HealthBase>();
+        }
 
         private void OnBossKill(HealthBase h)
         {
            SwitchStates(BossActions.DEATH);
         }
 
-        private void OnValidate()
+        private void Damage(HealthBase h)
         {
-            if (healthBase == null) healthBase = GetComponent<HealthBase>();
+            flashColor.ForEach(i => i.Flash());
+            if (particleSystem != null) particleSystem.Emit(30);
         }
+
 
 
         #region Movement
