@@ -6,6 +6,7 @@ namespace Collectables
 {
     public class BaseCollectable : MonoBehaviour
     {
+        public SFXType sfxType;
         public ItemType itemType;
 
         public string compareTag = "Player";
@@ -25,8 +26,14 @@ namespace Collectables
             }
         }
 
+        private void PlaySFX()
+        {
+            SFXPool.Instance.Play(sfxType);
+        }
+
         protected virtual void Collect()
         {
+            PlaySFX();
             gameObject.SetActive(false);
             if (graphicItem != null) graphicItem.SetActive(false);
             Invoke("HideObject", timeToHide);

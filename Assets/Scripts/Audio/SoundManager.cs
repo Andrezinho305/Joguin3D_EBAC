@@ -39,6 +39,7 @@ public enum MusicType
 
 public enum SFXType
 {
+    NONE,
     SFX01,
     SFE02,
     SFX03

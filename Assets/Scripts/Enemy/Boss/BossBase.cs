@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Core.StateMachine;
 using DG.Tweening;
+using Core.Singleton;
 
 
 namespace Boss
@@ -21,7 +22,7 @@ namespace Boss
 
 
 
-    public class BossBase : MonoBehaviour
+    public class BossBase : Singleton<BossBase>
     {
         private StateMachine<BossActions> stateMachine;
 
