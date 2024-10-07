@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class SpawnBase : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class SpawnBase : MonoBehaviour
 
     private Player _player;
     private Coroutine coroutine;
+
+    [SerializeField] private List<GameObject> _activateOnDeathList;
 
 
     private void OnTriggerEnter(Collider other)
@@ -23,8 +26,30 @@ public class SpawnBase : MonoBehaviour
             spawn.transform.position = bossSpawnPosition.position;
             _boss = spawn.GetComponentInChildren<Boss.BossBase>();
             coroutine = StartCoroutine(SpawnCourroutine());
+            _boss.healthBase.OnKill += OnBossKill;
+            _player.healthBase.OnKill += OnPlayerKill;
         }
 
+    }
+
+    private void OnBossKill(HealthBase h)
+    {
+        foreach (var i in _activateOnDeathList)
+        {
+            i.SetActive(true);
+            i.transform.DOScale(0, .2f).SetEase(Ease.OutBack).From();
+        }
+    }
+
+    private void OnPlayerKill (HealthBase h)
+    {
+        Destroy(_boss.gameObject);
+
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+            coroutine = null;
+        }
     }
 
     IEnumerator SpawnCourroutine()
