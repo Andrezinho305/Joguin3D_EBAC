@@ -2,24 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Core.Singleton;
-using Core.StateMachine;
 
 public class PauseManager : Singleton<PauseManager>
 {
+    public GameObject uiScreen;
+    public KeyCode pauseKey = KeyCode.Escape;
+    public static bool _isPaused;
 
 
-
-
-
-    public void Pause()
+    private void Update()
     {
-        Time.timeScale = 0;
+        if (Input.GetKeyDown(pauseKey))
+        {
+            uiScreen.SetActive(!uiScreen.activeSelf);
+            _isPaused = !_isPaused;
+            PauseGame();
+        }
     }
 
-    public void UnPause()
+    public void PauseGame()
     {
-        Time.timeScale = 1;
+       if(_isPaused)
+        {
+            Time.timeScale = 0f;
+        }
+
+       else
+        {
+            Time.timeScale = 1;
+        }
+
     }
-
-
 }
