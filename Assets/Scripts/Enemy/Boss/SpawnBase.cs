@@ -10,7 +10,6 @@ public class SpawnBase : MonoBehaviour
     public float waitBeforeAttack = 2f;
     public Boss.BossBase _boss;
 
-    private Player _player;
     private Coroutine coroutine;
 
     [SerializeField] private List<GameObject> _activateOnDeathList;
@@ -27,7 +26,7 @@ public class SpawnBase : MonoBehaviour
             _boss = spawn.GetComponentInChildren<Boss.BossBase>();
             coroutine = StartCoroutine(SpawnCourroutine());
             _boss.healthBase.OnKill += OnBossKill;
-            _player.healthBase.OnKill += OnPlayerKill;
+            p.healthBase.OnKill += OnPlayerKill; 
         }
 
     }
