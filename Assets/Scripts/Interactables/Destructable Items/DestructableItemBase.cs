@@ -32,7 +32,7 @@ public class DestructableItemBase : MonoBehaviour
     private void OnDamage(HealthBase h) //need tag to be "Enemy", looking for a bug fix
     {
         transform.DOShakeScale(shakeDuration, Vector3.up/2, shakeForce);
-        DropGroupOfCoins();
+        //DropGroupOfCoins();
     }
 
     private void DropCoins()
