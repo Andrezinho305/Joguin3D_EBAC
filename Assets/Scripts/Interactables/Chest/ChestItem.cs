@@ -4,16 +4,18 @@ using UnityEngine;
 using DG.Tweening;
 using Collectables;
 
-public class ChestItemCoin : ChestItemBase
+public class ChestItem : ChestItemBase
 {
-    public int coinNumber = 5;
-    public GameObject coinPrefab;
+    public int itemNumber = 5;
+    public GameObject collectablePrefab;
 
     private List<GameObject> _items = new List<GameObject>();
 
     public Vector2 randomRange = new Vector2(-2f, 2f);
 
     public float tweenEndTime = .5f;
+
+    public ItemType itemType = ItemType.COIN;
 
     public override void ShowItem()
     {
@@ -24,10 +26,11 @@ public class ChestItemCoin : ChestItemBase
     [NaughtyAttributes.Button]
     private void CreateItem()
     {
-        for(int i = 0; i<coinNumber; i++)
+        for(int i = 0; i< itemNumber; i++)
         {
-            var item = Instantiate(coinPrefab);
+            var item = Instantiate(collectablePrefab);
             item.transform.position = transform.position + Vector3.forward*Random.Range(randomRange.x, randomRange.y) + Vector3.right * Random.Range(randomRange.x, randomRange.y);
+            //spawna o item de forma aleatória dentro da chest, utilizar quando houverem varios
             item.transform.DOScale(0, 1f).SetEase(Ease.OutBack).From();
             _items.Add(item);
         }
@@ -42,7 +45,7 @@ public class ChestItemCoin : ChestItemBase
             i.transform.DOMoveY(2f, tweenEndTime).SetRelative();
             i.transform.DOScale(0, tweenEndTime / 2).SetDelay(tweenEndTime / 2);
 
-            ItemManager.Instance.AddByType(ItemType.COIN);
+            ItemManager.Instance.AddByType(itemType);
         }
     }
 

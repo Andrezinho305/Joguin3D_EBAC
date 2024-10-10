@@ -2042,7 +2042,6 @@ MonoBehaviour:
   buttons:
   - {fileID: 1466059481}
   - {fileID: 133640744}
-  - {fileID: 1662075975}
   duration: 0.2
   delay: 0.2
   ease: 27
@@ -3434,7 +3433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1662075976
 RectTransform:
   m_ObjectHideFlags: 0

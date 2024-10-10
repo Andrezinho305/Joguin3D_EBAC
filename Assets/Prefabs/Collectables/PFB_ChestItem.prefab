@@ -43,5 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f49e58744a3e826478ef8d5337716cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinNumber: 5
-  coinPrefab: {fileID: 6349025311157676811, guid: 519d9a7c26949c94c978a6e3a518b48f, type: 3}
+  itemNumber: 5
+  collectablePrefab: {fileID: 7767555371144454439, guid: 9934e2ef0fce38c4e8fbf56f5dc96267, type: 3}
+  randomRange: {x: -2, y: 2}
+  tweenEndTime: 0.5
+  itemType: 0
