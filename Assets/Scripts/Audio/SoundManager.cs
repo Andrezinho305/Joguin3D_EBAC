@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using Core.Singleton;
 
 public class SoundManager : Singleton<SoundManager>
@@ -41,7 +42,7 @@ public enum SFXType
 {
     NONE,
     SFX01,
-    SFE02,
+    SFX02,
     SFX03
 }
 
@@ -57,4 +58,5 @@ public class SFXSetup
 {
     public SFXType sfxType;
     public AudioClip sfxAudioClip;
+    public AudioMixerGroup sfxMixerGroup;
 }

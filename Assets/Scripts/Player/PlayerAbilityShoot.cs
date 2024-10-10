@@ -19,7 +19,6 @@ public class PlayerAbilityShoot : PlayerAbilityBase
 
     public FlashColour flashColor;
 
-    
 
     protected override void Init()
     {
@@ -61,9 +60,13 @@ public class PlayerAbilityShoot : PlayerAbilityBase
 
     private void StartShoot()
     {
+        if(!PauseManager._isPaused)
+        {
         _currentGun.StartShoot();
         flashColor?.Flash(); //?. = if(xx != null)
         CameraShake.Instance.Shake();
+        }
+        else if (PauseManager._isPaused) { }
     }
 
     private void CancelShoot()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using Core.Singleton;
 
 public class SFXPool : Singleton<SFXPool>
@@ -30,6 +31,7 @@ public class SFXPool : Singleton<SFXPool>
         GameObject go = new GameObject("SFX Pool");
         go.transform.SetParent(gameObject.transform);
         _audioSourceList.Add(go.AddComponent<AudioSource>());
+        //_audioSourceList.Add(AudioMixerGroup));
     }
 
     public void Play(SFXType sfxType)
