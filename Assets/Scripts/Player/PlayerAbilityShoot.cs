@@ -18,6 +18,7 @@ public class PlayerAbilityShoot : PlayerAbilityBase
     private int gunIndex = 0;
 
     public FlashColour flashColor;
+    public AudioSource AudioSource;
 
 
     protected override void Init()
@@ -65,6 +66,7 @@ public class PlayerAbilityShoot : PlayerAbilityBase
         _currentGun.StartShoot();
         flashColor?.Flash(); //?. = if(xx != null)
         CameraShake.Instance.Shake();
+        AudioSource.Play();
         }
         else if (PauseManager._isPaused) { }
     }

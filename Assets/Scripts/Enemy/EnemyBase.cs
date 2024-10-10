@@ -12,6 +12,7 @@ namespace Enemy
     {
         public Collider collider;
         public FlashColour flashColor;
+        public AudioSource audioSource;
 
         public ParticleSystem particleSystem;
 
@@ -83,6 +84,7 @@ namespace Enemy
         {
             if (flashColor != null) flashColor.Flash();
             if (particleSystem != null) particleSystem.Emit(15);
+            audioSource.Play();
 
             //transform.position -= transform.forward;
 
