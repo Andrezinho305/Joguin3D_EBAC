@@ -4913,6 +4913,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  sfxType: 6
 --- !u!65 &250223090114896912
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4924,8 +4925,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.185272, y: 4.107485, z: 3.4161072}
-  m_Center: {x: 0.11174011, y: 1.8614559, z: 0.066158295}
+  m_Size: {x: 5.1342745, y: 4.995212, z: 4.639633}
+  m_Center: {x: 0.25319338, y: 1.4175923, z: 0.275697}
 --- !u!114 &250223090114897007
 MonoBehaviour:
   m_ObjectHideFlags: 0

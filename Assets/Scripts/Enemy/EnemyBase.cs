@@ -37,6 +37,8 @@ namespace Enemy
         [Header("Event")]
         public UnityEvent onKillEvent;
 
+        public SFXType sfxType;
+
         private void Awake()
         {
             Init();
@@ -59,6 +61,10 @@ namespace Enemy
             _currentLife = startLife;
             
         }
+        private void PlaySFX()
+        {
+            SFXPool.Instance.Play(sfxType);
+        }
 
         protected virtual void Kill()
         {
@@ -75,6 +81,7 @@ namespace Enemy
 
             Destroy(gameObject, 3f);
             PlayAnimationByTrigger(AnimationType.DEATH);
+            PlaySFX();
 
             onKillEvent?.Invoke(); //quando o inimigo morre, ativa um evento descrito no editor
 

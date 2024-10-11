@@ -15,6 +15,7 @@ public class SoundManager : Singleton<SoundManager>
     {
         var music = GetMusicByType(musicType);
        musicSource.clip = music.musicAudioClip;
+
        musicSource.Play();
     }    
     
@@ -43,7 +44,10 @@ public enum SFXType
     NONE,
     SFX01,
     SFX02,
-    SFX03
+    SFX03,
+    PLAYER_SHOOT,
+    ENEMY_HIT,
+    ENEMY_DEATH
 }
 
 [System.Serializable]
@@ -58,5 +62,4 @@ public class SFXSetup
 {
     public SFXType sfxType;
     public AudioClip sfxAudioClip;
-    public AudioMixerGroup sfxMixerGroup;
 }

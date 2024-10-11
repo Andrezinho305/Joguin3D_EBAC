@@ -10,6 +10,8 @@ public class SFXPool : Singleton<SFXPool>
     public int poolSize = 10;
     private int _index = 0;
 
+    [SerializeField] private AudioMixerGroup _audioMixer;
+
     private void Start()
     {
         CreatePool();
@@ -30,8 +32,10 @@ public class SFXPool : Singleton<SFXPool>
     {
         GameObject go = new GameObject("SFX Pool");
         go.transform.SetParent(gameObject.transform);
-        _audioSourceList.Add(go.AddComponent<AudioSource>());
-        //_audioSourceList.Add(AudioMixerGroup));
+        var audioSource = go.AddComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = _audioMixer;
+        _audioSourceList.Add(audioSource); 
+
     }
 
     public void Play(SFXType sfxType)
